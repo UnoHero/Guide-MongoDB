@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import en from "../tracks/en.vtt";
+import no from "../tracks/no.vtt";
+
+
 import Tut from '../video/Tutorial.mp4';
 
 
@@ -98,7 +102,7 @@ const Guide = () => {
       .catch((error) => console.error('Kunne ikke kopiere kode: ', error));
   }
 
-  
+  console.log(Tut);
 
   return (  
     <Container>
@@ -108,7 +112,11 @@ const Guide = () => {
       <Section>
         <h2>Video</h2>
         <VideoWrapper>
-          <Video src={Tut} controls type="video/mp4" alt="Tutorial of how to do everything."/>
+          <Video src={Tut} controls type="video/mp4" alt="Tutorial of how to do everything.">
+            <track src={no} srclang="no" label='Norsk' />
+            <track src={en} srclang="en" label='English' />
+
+          </Video>
         </VideoWrapper>
       </Section>
 

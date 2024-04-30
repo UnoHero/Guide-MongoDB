@@ -1,0 +1,73 @@
+WEBVTT
+
+00:01.000 --> 00:03.000
+- Hi and welcome to this video.
+
+00:03.000 --> 00:07.000
+- Here, I will explain how to set up MongoDB locally.
+
+00:07.000 --> 00:10.000
+- So first, you need a machine to set it up on.
+
+00:10.000 --> 00:12.000
+- Here, I have an Ubuntu VM to demonstrate.
+
+00:12.000 --> 00:14.000
+- You'll find the commands below.
+
+00:15.000 --> 00:21.000
+- First, run the command 'sudo apt-get install gnupg curl'.
+
+00:25.000 --> 00:28.000
+- Run 'curl' and create the file.
+
+01:10.000 --> 01:15.000
+- Load the local package base to update the package lists for available software.
+
+01:15.000 --> 01:20.000
+- Make sure your machine has the latest version.
+
+01:25.000 --> 01:30.000
+- Just making sure the recorder is running.
+
+02:00.000 --> 02:20.000
+- Download the MongoDB program.
+
+02:40.000 --> 02:45.000
+- Start MongoDB.
+
+02:47.000 --> 02:50.000
+- If it doesn't work, you can run 'daemon-reload'.
+
+02:50.000 --> 02:55.000
+- Check if MongoDB is running.
+
+03:00.000 --> 03:05.000
+- Ensure that MongoDB starts with the machine.
+
+03:07.000 --> 03:10.000
+- Restart MongoDB.
+
+03:10.000 --> 03:15.000
+- 'Mongosh' is the command to enter the DB shell.
+
+03:17.000 --> 03:20.000
+- Now, I'll show you how to change the IP address of the database.
+
+03:20.000 --> 03:23.000
+- The 'mongod.conf' file is located in '/etc'.
+
+03:25.000 --> 03:30.000
+- Edit the 'mongod.conf' file.
+
+03:30.000 --> 03:35.000
+- Find 'bindIp' and change it to your machine's IP.
+
+04:10.000 --> 04:12.000
+- Restart the database to apply the changes.
+
+04:15.000 --> 04:20.000
+- Now, by running 'Mongosh', you'll be able to access the shell with the IP address you chose.
+
+04:23.000 --> 04:24.000
+- Thank you for now, have a great day ahead!
