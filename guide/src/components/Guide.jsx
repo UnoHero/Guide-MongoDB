@@ -12,7 +12,7 @@ const Container = styled.div`
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f8f9fa;
+  background-color: #f0f0f0;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
@@ -20,6 +20,7 @@ const Container = styled.div`
 const Title = styled.h1`
   text-align: center;
   margin-bottom: 20px;
+  color: #333; 
 `;
 
 const Section = styled.div`
@@ -28,7 +29,7 @@ const Section = styled.div`
 
 const VideoWrapper = styled.div`
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  padding-bottom: 56.25%; 
   height: 0;
   overflow: hidden;
 `;
@@ -54,7 +55,7 @@ const CodeWrapper = styled.div`
 const CopyButton = styled.button`
   margin-bottom: 10px;
   padding: 5px 10px;
-  background-color: #007bff;
+  background-color: firebrick;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -62,7 +63,7 @@ const CopyButton = styled.button`
   transition: background-color 0.3s ease;
   
   &:hover {
-    background-color: #0056b3;
+    background-color: #8B0000; 
   }
 `;
 
@@ -82,7 +83,7 @@ const NavigationBox = styled.div`
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  background-color: #fff;
+  background-color: #f0f0f0;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -94,9 +95,24 @@ const NavigationTitle = styled.h3`
 
 const NavigationButton = styled.button`
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px; 
   cursor: pointer;
+  padding: 10px; 
+  background-color: firebrick; 
+  color: #fff; 
+  border: none;
+  border-radius: 5px;
+  font-size: 16px; 
+  font-weight: 600; 
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #8B0000; 
+  }
 `;
+
+
+
 
 const Guide = () => {
   const [activeStep, setActiveStep] = useState(1);
@@ -148,7 +164,9 @@ const Guide = () => {
         ))}
       </NavigationBox>
 
-      <h4>Kort guide til lokal mongoDB server på linux ubuntu</h4>
+      <h4>
+        Kort guide til lokal mongoDB server på linux ubuntu. Vi bruker Community Edition fordi mongoDB ikke har laget en egen som støtter Linux.
+      </h4>
 
       {/* Video Section */}
       <Section>
@@ -184,7 +202,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 1: Importer den offentlige nøkkelen */}
-      <Section id={`step${activeStep}`}>
+      <Section id={`step1`}>
         <h2>Trinn 1: Importer den offentlige nøkkelen</h2>
         <Instructions>
           Installer gnupg og curl hvis de ikke allerede er tilgjengelige, og importer deretter MongoDBs offentlige GPG-nøkkel.
@@ -198,7 +216,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 2: Opprett en liste fil for MongoDB */}
-      <Section id={`step1`}>
+      <Section id={`step2`}>
         <h2>Trinn 2: Opprett en liste fil for MongoDB</h2>
         <Instructions>
           Opprett listen filen for din versjon av Ubuntu.
@@ -212,7 +230,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 3: Last inn lokal pakke database */}
-      <Section id={`step2`}>
+      <Section id={`step3`}>
         <h2>Trinn 3: Last inn lokal pakke database</h2>
         <Instructions>
           Last inn den lokale pakkebasen for å oppdatere pakkelister for tilgjengelig programvare.
@@ -226,10 +244,10 @@ const Guide = () => {
       </Section>
 
       {/* Step 4: Installer MongoDB-pakkene */}
-      <Section id={`step3`}>
+      <Section id={`step4`}>
         <h2>Trinn 4: Opptater lokale pakker</h2>
         <Instructions>
-          Installer MongoDB-pakkene.
+          Forsikre deg om at maskinen er oppdatert
         </Instructions>
         <CodeWrapper>
           <CopyButton onClick={() => copyToClipboard(snippets.step4)}>
@@ -240,10 +258,10 @@ const Guide = () => {
       </Section>
 
       {/* Step 5: Start MongoDB */}
-      <Section id={`step4`}>
+      <Section id={`step5`}>
         <h2>Trinn 5: Installer MongoDB pakker</h2>
         <Instructions>
-          Start MongoDB-tjenesten.
+          Installer MongoDB-tjenesten.
         </Instructions>
         <CodeWrapper>
           <CopyButton onClick={() => copyToClipboard(snippets.step5)}>
@@ -254,7 +272,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 6: Bekreft MongoDB status */}
-      <Section id={`step5`}>
+      <Section id={`step6`}>
         <h2>Trinn 6: Start MongoDB</h2>
         <Instructions>
           Start MongoDB
@@ -268,7 +286,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 7: Aktiver MongoDB-tjenesten */}
-      <Section id={`step6`}>
+      <Section id={`step7`}>
         <h2>Trinn 7: Aktiver MongoDB-tjenesten</h2>
         <Instructions>
           Aktiver MongoDB-tjenesten slik at den starter automatisk ved oppstart.
@@ -282,7 +300,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 8: Stopp MongoDB */}
-      <Section id={`step7`}>
+      <Section >
         <h2>Tips: Hvordan stoppe MongoDB</h2>
         <Instructions>
           Stopp MongoDB-tjenesten.
