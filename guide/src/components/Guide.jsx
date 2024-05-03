@@ -77,7 +77,30 @@ const Image = styled.img`
   margin: 0 auto;
 `;
 
+const NavigationBox = styled.div`
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;
+
+const NavigationTitle = styled.h3`
+  margin-bottom: 10px;
+`;
+
+const NavigationButton = styled.button`
+  display: block;
+  margin-bottom: 5px;
+  cursor: pointer;
+`;
+
 const Guide = () => {
+  const [activeStep, setActiveStep] = useState(1);
+
   const [snippets] = useState({
     step1: `sudo apt-get install gnupg curl`,
     step2: `curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor`,
@@ -102,11 +125,28 @@ const Guide = () => {
       .catch((error) => console.error('Kunne ikke kopiere kode: ', error));
   }
 
-  console.log(Tut);
+  const handleStepClick = (step) => {
+    const element = document.getElementById(`step${step}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (  
     <Container>
       <Title>Installer MongoDB Community Edition</Title>
+
+      <NavigationBox>
+        <NavigationTitle>Trinn</NavigationTitle>
+        {[...Array(15)].map((_, index) => (
+          <NavigationButton
+            key={index + 1}
+            onClick={() => handleStepClick(index + 1)}
+          >
+            Trinn {index + 1}
+          </NavigationButton>
+        ))}
+      </NavigationBox>
 
       <h4>Kort guide til lokal mongoDB server på linux ubuntu</h4>
 
@@ -144,7 +184,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 1: Importer den offentlige nøkkelen */}
-      <Section>
+      <Section id={`step${activeStep}`}>
         <h2>Trinn 1: Importer den offentlige nøkkelen</h2>
         <Instructions>
           Installer gnupg og curl hvis de ikke allerede er tilgjengelige, og importer deretter MongoDBs offentlige GPG-nøkkel.
@@ -158,7 +198,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 2: Opprett en liste fil for MongoDB */}
-      <Section>
+      <Section id={`step1`}>
         <h2>Trinn 2: Opprett en liste fil for MongoDB</h2>
         <Instructions>
           Opprett listen filen for din versjon av Ubuntu.
@@ -172,7 +212,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 3: Last inn lokal pakke database */}
-      <Section>
+      <Section id={`step2`}>
         <h2>Trinn 3: Last inn lokal pakke database</h2>
         <Instructions>
           Last inn den lokale pakkebasen for å oppdatere pakkelister for tilgjengelig programvare.
@@ -186,7 +226,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 4: Installer MongoDB-pakkene */}
-      <Section>
+      <Section id={`step3`}>
         <h2>Trinn 4: Opptater lokale pakker</h2>
         <Instructions>
           Installer MongoDB-pakkene.
@@ -200,7 +240,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 5: Start MongoDB */}
-      <Section>
+      <Section id={`step4`}>
         <h2>Trinn 5: Installer MongoDB pakker</h2>
         <Instructions>
           Start MongoDB-tjenesten.
@@ -214,7 +254,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 6: Bekreft MongoDB status */}
-      <Section>
+      <Section id={`step5`}>
         <h2>Trinn 6: Start MongoDB</h2>
         <Instructions>
           Start MongoDB
@@ -228,7 +268,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 7: Aktiver MongoDB-tjenesten */}
-      <Section>
+      <Section id={`step6`}>
         <h2>Trinn 7: Aktiver MongoDB-tjenesten</h2>
         <Instructions>
           Aktiver MongoDB-tjenesten slik at den starter automatisk ved oppstart.
@@ -242,7 +282,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 8: Stopp MongoDB */}
-      <Section>
+      <Section id={`step7`}>
         <h2>Tips: Hvordan stoppe MongoDB</h2>
         <Instructions>
           Stopp MongoDB-tjenesten.
@@ -256,7 +296,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 9: Start MongoDB på nytt */}
-      <Section>
+      <Section id={`step8`}>
         <h2>Trinn 8: Start MongoDB på nytt</h2>
         <Instructions>
           Start MongoDB-tjenesten på nytt for å bruke eventuelle konfigurasjonsendringer.
@@ -270,7 +310,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 10: Åpne MongoDB Shell */}
-      <Section>
+      <Section id={`step9`}>
         <h2>Trinn 9: Sjekk om MongoDB kjører</h2>
         <Instructions>
           Bekreft at MongoDB har startet vellykket.
@@ -284,7 +324,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 10: Åpne MongoDB Shell */}
-      <Section>
+      <Section id={`step10`}>
         <h2>Trinn 10: Åpne MongoDB Shell</h2>
         <Instructions>
           Åpne MongoDB-skallet for å utføre administrative oppgaver og spørringer.
@@ -298,7 +338,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 10: Åpne MongoDB Shell */}
-      <Section>
+      <Section id={`step11`}>
         <h2>Trinn 11: Fin Mongodb conf </h2>
         <Instructions>
           Byt mappe til /etc
@@ -312,7 +352,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 10: Åpne MongoDB Shell */}
-      <Section>
+      <Section id={`step12`}>
         <h2>Trinn 12: Rediger MongoDB conf filen</h2>
         <Instructions>
           Ved bruk av et text redigerings program gå inn i mongod.conf
@@ -326,7 +366,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 13: Rediger */}
-      <Section>
+      <Section id={`step13`}>
         <h2>Trinn 13: Rediger</h2>
         <Image src="/assets/mongodb.conf.png" alt="MongoDB configuration file" />
         <Instructions>
@@ -339,7 +379,7 @@ const Guide = () => {
       </Section>
 
       {/* Step 10: Åpne MongoDB Shell */}
-      <Section>
+      <Section id={`step14`}>
         <h2>Trinn 14: Start MongoDB på nytt</h2>
         <Instructions>
           Start MongoDB-tjenesten på nytt for å bruke eventuelle konfigurasjonsendringer.
@@ -352,7 +392,7 @@ const Guide = () => {
         </CodeWrapper>
       </Section>
 
-      <Section>
+      <Section id={"step15"}>
         <h2>Trinn 15: Koble til med ny ip</h2>
         <Instructions>
           Nå som Ip-en er endret må du definere ip-en du søker etter. Siden din locale ikke lenger går til Data Basen. Etter Mongosh skriver du Ip addresen du skrev inn i konfigurasjons filen.
