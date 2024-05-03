@@ -55,7 +55,7 @@ const CodeWrapper = styled.div`
 const CopyButton = styled.button`
   margin-bottom: 10px;
   padding: 5px 10px;
-  background-color: firebrick;
+  background-color: #AC1515;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -79,14 +79,19 @@ const Image = styled.img`
 `;
 
 const NavigationBox = styled.div`
-  position: fixed;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background-color: #f0f0f0;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none; 
+
+  @media (min-width: 1050px) {
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const NavigationTitle = styled.h3`
@@ -98,24 +103,22 @@ const NavigationButton = styled.button`
   margin-bottom: 10px; 
   cursor: pointer;
   padding: 10px; 
-  background-color: firebrick; 
+  background-color: #AC1515; 
   color: #fff; 
   border: none;
   border-radius: 5px;
   font-size: 16px; 
   font-weight: 600; 
   transition: background-color 0.3s ease;
+  width: 90px; 
+  height: 40px; 
 
   &:hover {
     background-color: #8B0000; 
   }
 `;
 
-
-
-
 const Guide = () => {
-  const [activeStep, setActiveStep] = useState(1);
 
   const [snippets] = useState({
     step1: `sudo apt-get install gnupg curl`,
