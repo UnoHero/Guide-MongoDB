@@ -108,6 +108,8 @@ const Guide = () => {
     <Container>
       <Title>Installer MongoDB Community Edition</Title>
 
+      <h4>Kort guide til lokal mongoDB server på linux ubuntu</h4>
+
       {/* Video Section */}
       <Section>
         <h2>Video</h2>
@@ -124,6 +126,21 @@ const Guide = () => {
         <h3>
           For å komme i gang, må du først ha en maskin å jobbe med. I videoen ovenfor brukes en Linux-maskin, spesifikt Ubuntu. Følg enten videoen eller den skriftlige guiden.
         </h3>
+        <br/>
+        <ul>
+          <h4>
+            Det du trenger
+          </h4>
+          <li>
+            Linux Maskin
+          </li>
+          <li>
+            Internet
+          </li>
+          <li>
+            Tastatur
+          </li>
+        </ul>
       </Section>
 
       {/* Step 1: Importer den offentlige nøkkelen */}
