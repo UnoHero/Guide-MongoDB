@@ -80,6 +80,7 @@ const Image = styled.img`
 
 const NavigationBox = styled.div`
   display: none; 
+  max-height: 100%;
 
   @media (min-width: 1050px) {
     display: block;
@@ -100,18 +101,18 @@ const NavigationTitle = styled.h3`
 
 const NavigationButton = styled.button`
   display: block;
-  margin-bottom: 10px; 
+  margin: 0 0 5px 0; 
+  padding: 0 0 0 0;
   cursor: pointer;
-  padding: 10px; 
   background-color: #AC1515; 
   color: #fff; 
   border: none;
   border-radius: 5px;
-  font-size: 16px; 
-  font-weight: 600; 
+  font-size: 15px; 
+  font-weight: 500; 
   transition: background-color 0.3s ease;
-  width: 90px; 
-  height: 40px; 
+  width: 50px; 
+  height: 25px; 
 
   &:hover {
     background-color: #8B0000; 
@@ -162,7 +163,7 @@ const Guide = () => {
             key={index + 1}
             onClick={() => handleStepClick(index + 1)}
           >
-            Trinn {index + 1}
+            {index + 1}
           </NavigationButton>
         ))}
       </NavigationBox>
